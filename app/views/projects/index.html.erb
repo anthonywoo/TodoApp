@@ -1,0 +1,14 @@
+<h1> Projects </h1>
+
+<% @projects.each do |project| %>
+  <li><%= link_to project.title, project_url(project) %></li>
+
+<% end %>
+<br>
+
+<%= render :partial => "form" %>
+<br>
+or
+<br>
+<br>
+<%= link_to "Create New Project" , new_project_url%>
