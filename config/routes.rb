@@ -1,7 +1,19 @@
 TodoApp::Application.routes.draw do
-  root to: "projects#index"
-  resources :projects
-  resources :items
+  root :to => "home#index"
+  resources :projects do
+    resources :items, :only => [:index]
+  end
+
+  resources :items, :except => [:index] do
+    member do
+      post "complete"
+      post "incomplete"
+    end
+  end
+  resources :users
+  resources :teams do
+    resources :projects, :only => [:new]
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -5,7 +5,11 @@
 <ul>
 <li> Project: <%=link_to @item.project.title, project_url(@item.project)%> </li>
 <li> Description: <%= @item.description %> </li>
-<li> Completed?: <%= @item.completed %> </li>
+<li> Complete: <%= @item.completed %> </li>
 
 
 </ul>
+
+<%= button_to "Complete", complete_item_url(@item) %>
+<%= button_to "Incomplete", incomplete_item_url(@item) %>
+<%= button_to "Delete", item_url(@item), :method => :delete%>

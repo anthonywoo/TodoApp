@@ -1,0 +1,18 @@
+<h1> <%= @user.name %></h1>
+
+
+<h4> Teams: </h4>
+
+<% unless @teams.empty? %>
+<% @teams.each do |team| %>
+ <li><%= link_to team.name, team_url(team) %></li>
+<% end %>
+<% end %>
+<h4> Items: </h4>
+<% @user.items.each do |item| %>
+<li><%= link_to item.title, item_url(item) %></li>
+ <% end %>
+<br>
+<br>
+<%= link_to "Edit User", edit_user_url(@user) %> |
+<%= link_to "Delete User", user_url(@user), :method => :delete %>

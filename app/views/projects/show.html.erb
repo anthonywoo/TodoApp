@@ -1,11 +1,13 @@
 <h1> <%= @project.title %></h1>
 
+<h3> Team: <%= link_to @team.name, team_url(@team)%> </h3>
+<h3> Desc: <%= @project.description %> </h3>
 
-<h3> <%= @project.description %> </h3>
 
-
-<h4> Items: </h4>
-
+<h3> Items: </h3>
+<%=link_to "View all Items in Detail", project_items_url(@project) %>  
+<br>
+<br>
 <% unless @project.items.empty? %>
 <% @project.items.each do |item| %>
  <li><%= link_to item.title, item_url(item) %></li>

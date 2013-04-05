@@ -1,13 +1,11 @@
 <h1> Items </h1>
-
-<% @items.each do |item| %>
-  <li><%= link_to item.title, item_url(item) %></li>
+<%= render :partial => "form" %>
+<br>
+<br>
+<% @items.each do |item_detail| %>
+<%= render :partial => "item_detail", :locals => {:item_detail=> item_detail}%>
 
 <% end %>
 <br>
-<%= render :partial => "form" %>
-<br>
-or
 <br>
 <br>
-<%= link_to "Create New Item" , new_item_url%>

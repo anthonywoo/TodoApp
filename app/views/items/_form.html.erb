@@ -2,7 +2,7 @@
 <%= f.label :title %>
 <%= f.text_field :title %>
 <%= f.label :description %>
-<%= f.text_field :description %>
+<%= f.text_area :description ,:rows => 1%>
 <%= f.collection_select :project_id, Project.all, :id, :title %>
 
 <%= f.submit %>

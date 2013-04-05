@@ -1,0 +1,7 @@
+
+<%= link_to item_detail.title, item_url(item_detail) %>
+| Desc:
+<%= truncate item_detail.description, :length => 10 %>
+| Completed:
+<%= item_detail.completed %>
+<br>
