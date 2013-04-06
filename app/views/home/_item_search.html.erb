@@ -1,12 +1,14 @@
 <br>
+
 <%= form_tag('/items/search', :method => :get) %>
 <%= label_tag "item_search", "Item Search:" %>
 <%= text_field_tag "query[title]", nil,:id => "item_search"%>
 <br>
+<div class="radio-toolbar">
 <%= radio_button_tag "query[completed]", true, false, :id => "radio_complete" %>
 <%= label_tag "radio_complete", "Complete" %>
 <%= radio_button_tag "query[completed]", false, false, :id => "radio_incomplete" %>
 <%= label_tag "radio_incomplete", "Incomplete" %>
-
+</div>
 <br>
 <%= submit_tag "Search", :class => 'btn' %>
