@@ -10,6 +10,14 @@
 
 </ul>
 
-<%= button_to "Complete", complete_item_url(@item) %>
-<%= button_to "Incomplete", incomplete_item_url(@item) %>
+<%= form_for @item do |f| %>
+  <%= f.hidden_field :completed, :value => true %>
+  <%= f.submit "Complete" %>
+<% end %>
+
+<%= form_for @item do |f| %>
+  <%= f.hidden_field :completed, :value => false %>
+  <%= f.submit "Incomplete" %>
+<% end %>
+
 <%= button_to "Delete", item_url(@item), :method => :delete%>

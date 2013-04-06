@@ -9,7 +9,20 @@
 <br>
 <br>
 <% unless @project.items.empty? %>
-<% @project.items.each do |item| %>
- <li><%= link_to item.title, item_url(item) %></li>
+
+<%= form_tag('/items/update_batch', :method=>:put) %>
+  <% @project.items.each do |item| %>
+    <li>
+      <%= link_to item.title, item_url(item) %>
+      <%= hidden_field_tag "item[#{item.id}][completed]", false %>
+      <%= check_box_tag "item[#{item.id}][completed]", true, item.completed%>
+    </li>
+  <% end %>
+  <br>
+  <%= submit_tag "Update Items" %>
 <% end %>
-<% end %>
+
+
+
+
+

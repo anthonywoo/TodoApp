@@ -5,10 +5,11 @@ TodoApp::Application.routes.draw do
   end
 
   resources :items, :except => [:index] do
-    member do
-      post "complete"
-      post "incomplete"
+    collection do
+      get "search"
+      put "update_batch"
     end
+    
   end
   resources :users
   resources :teams do

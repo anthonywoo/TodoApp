@@ -1,0 +1,10 @@
+<h1> Items Search Results </h1>
+
+<br>
+<% @items.each do |item_detail| %>
+<%= render :partial => "item_detail", :locals => {:item_detail=> item_detail}%>
+
+<% end %>
+<br>
+<br>
+

@@ -1,9 +1,11 @@
 <%= form_for @item do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title %>
-<%= f.label :description %>
-<%= f.text_area :description ,:rows => 1%>
-<%= f.collection_select :project_id, Project.all, :id, :title %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
 
-<%= f.submit %>
+  <%= f.label :description %>
+  <%= f.text_area :description ,:rows => 1%>
+
+  <%= f.collection_select :project_id, Project.all, :id, :title %>
+
+  <%= f.submit %>
 <% end %>

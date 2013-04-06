@@ -16,7 +16,12 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.create!(params[:team])
-    redirect_to teams_url
+    @team = Team.new(params[:team])
+    if @team.save
+      redirect_to teams_url
+    else
+      flash.now["notice"] = @team.errors.full_messages
+      render :index
+    end
   end
 end

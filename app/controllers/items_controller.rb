@@ -14,28 +14,36 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def update
+    @item = Item.find(params[:id])
+    @item.update_attributes(params[:item])
+    render :show
+  end
+
   def create
     @item = Item.create!(params[:item])
     redirect_to project_items_url(@item.project)
-  end
-
-  def complete
-    @item = Item.find(params[:id])
-    @item.update_attributes(:completed => true)
-    #render :show
-    redirect_to item_url(@item)
-  end
-
-  def incomplete
-    @item = Item.find(params[:id])
-    @item.update_attributes(:completed => false)
-    #render :show
-    redirect_to item_url(@item)
   end
 
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to project_url(@item.project)
+  end
+
+  def search
+    query = params[:query]
+    query = Item.search(query)
+    @items = query
+  end
+
+  def update_batch
+    items = params[:item]
+    items.each do |k,query|
+      item = Item.find(k.to_i)
+      item.update_attributes(query)
+    end
+    project = Item.find(items.keys[0]).project
+    redirect_to project_url(project)
   end
 end
