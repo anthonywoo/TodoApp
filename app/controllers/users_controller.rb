@@ -23,6 +23,9 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to user_url(@user)
     else
+      # REV: nice use of flash, you could also use it to
+      # indicate a successful save with flash["success"]
+      # i think
       flash.now["notice"] = @user.errors.full_messages
       render :edit
     end

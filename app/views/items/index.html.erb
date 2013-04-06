@@ -2,6 +2,9 @@
 <%= render :partial => "form" %>
 <br>
 <br>
+<!-- REV: nice job pulling these into partials.
+remember the shortcut: if your variable passed will
+be named the same as your partial title, you can just pass: :partial => "item_detail", :object => item_detail -->
 <% @items.each do |item_detail| %>
   <%= render :partial => "item_detail", :locals => {:item_detail=> item_detail}%>
 

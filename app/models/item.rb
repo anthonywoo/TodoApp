@@ -3,6 +3,7 @@ class Item < ActiveRecord::Base
   attr_accessible :completed, :description, :title, :project_id
   validates :title, :description ,:presence=> true
 
+  # REV: nice fattening of the model :)
   def self.search(query)
     query.delete "title" if query["title"] == ""
     query["completed"] = query["completed"] == "false" ? false : true if query["completed"]
